@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sunlight.mapper.DataMapper">
+    <resultMap id="sensorMap" type="com.example.sunlight.model.DataModel">
+        <id property="time" column="Time" jdbcType="TIMESTAMP" javaType="java.time.LocalDateTime"/>
+        <result property="temperature" javaType="java.lang.String" column="temperature"/>
+        <result property="humidity" javaType="java.lang.String" column="humidity"/>
+        <result property="brightness" javaType="java.lang.String" column="brightness"/>
+        <result property="movement" javaType="java.lang.String" column="movement"/>
+        <result property="co2" javaType="java.lang.String" column="co2"/>
+        <result property="toxicgas" javaType="java.lang.String" column="toxicgas"/>
+    </resultMap>
+    <select id="selectAll" parameterType="java.util.List" resultMap="sensorMap">
+        SELECT *
+        FROM sensor
+        ORDER BY time DESC
+    </select>
+    <select id="select_temperature" parameterType="java.util.List" resultMap="sensorMap">
+        SELECT time, temperature
+        FROM sensor
+    </select>
+    <select id="select_humidity" parameterType="java.util.List" resultMap="sensorMap">
+        SELECT time, humidity
+        FROM sensor
+    </select>
+    <select id="select_brightness" parameterType="java.util.List" resultMap="sensorMap">
+        SELECT time, brightness
+        FROM sensor
+    </select>
+    <select id="select_movement" parameterType="java.util.List" resultMap="sensorMap">
+        SELECT time, movement
+        FROM sensor
+    </select>
+    <select id="select_co2" parameterType="java.util.List" resultMap="sensorMap">
+        SELECT time, co2
+        FROM sensor
+    </select>
+    <select id="select_toxicgas" parameterType="java.util.List" resultMap="sensorMap">
+        SELECT time, toxicgas
+        FROM sensor
+    </select>
+</mapper>
